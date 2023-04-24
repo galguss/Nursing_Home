@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/styles/style.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('header')  %>
+    <main>
+        <div class="container_table">
+        <h3 class="title"><%- pageTitle %></h3>
+        <table>
+            <tr>
+                <td colspan="100" class="right">
+                    <form action="/R/Add" method="get">
+                        <button id="btnTAdd">הוספה +</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>מספר חדר</th>
+                <th>מספר מיטה</th>
+                <th>שם דייר/ת</th>
+                <th>מספר מכשיר</th>
+                <th>כפתור פעיל</th>
+                <th></th>
+            </tr>
+        <% for(let item of data) {%>
+            <tr>
+                <td>
+                    <form action="/R/Edit" method="get">
+                        <input type="hidden" name="id" value="<%= item._id %>">
+                        <button class="btnT">ערוך</button>
+                    </form>
+                </td>
+                <td><%= item.room_number %></td>
+                <td><%= item.bed_number %></td>
+                <td><%= item.dayar_name %></td>
+                <td><%= item.device_number %></td>
+                <td><%= item.CallIsActive %></td>
+                <td>
+                    <form action="/R/Delete" method="post" 
+                        onsubmit="return confirm('נא לאשר מחיקה'); return false;">
+                        <input type="hidden" name="id" value="<%= item._id %>">
+                        <button class="btnT">מחיקה</button>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+        </table>
+        </div>
+    </main>
+</body>
+</html>

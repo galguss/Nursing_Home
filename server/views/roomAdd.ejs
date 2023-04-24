@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/styles/style.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+</head>
+<body>
+    <%- include('header') %>
+    <main class="container">
+        <form action="" method="post" class="setup_from" type="submit">
+            <h3 class="title"><%= pageTitle %></h3>
+            <label for="room_number" class="label_from">מספר חדר</label>
+            <input value="<%= item.room_number %>" class="input_form" name="room_number" type="number" required />
+            <label for="bed_number" class="label_from">מספר מיטה</label>
+            <input value="<%= item.bed_number %>" class="input_form" name="bed_number" type="number" required />
+            <label for="dayar_name" class="label_from">שם דייר/ת</label>
+            <input value="<%= item.dayar_name %>" class="input_form" name="dayar_name" type="string" />
+            <label for="device_number" class="label_from">מס מכשיר</label>
+            <input value="<%= item.device_number %>" class="input_form" name="device_number" type="number" />
+    
+            <button class="btn_from">הוסף</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,3 +1,4 @@
+#include <GalGuss_TimeM.h>
 #include <Kits4me_SimpleBtn.h>
 #include <ASCIIDic.h>
 #include <NX7Seg.h>
@@ -40,15 +41,15 @@ int ReadMuxChannel(byte chnl) {
 #define DATA_DIO  D7  // dio
 nx7seg my4x7seg = nx7seg(LATCH_DIO, CLK_DIO, DATA_DIO, false); 
 
-void showMux(int numberc) {
-  my4x7seg.writeDigit((numberc > 9)?numberc%10:numberc,0,false);
-  my4x7seg.writeDigit((numberc > 9)?numberc/10 : 0,1,false);
+void showMux(int number) {
+  my4x7seg.writeDigit((number > 9)?number%10:number,0,false);
+  my4x7seg.writeDigit((number > 9)?number/10 : 0,1,false);
   my4x7seg.refresh(200);
 }
 
 
 // --- for server ---
-unsigned long TimeForResponse;
+GalGuss_TimeM TimeForResponse(1000);
 int CH; // Room number
 int DEV; // Bed number
 // ---------------------
@@ -96,9 +97,9 @@ void loop() {
        SendData(2);
     }
    
-   if((millis() - TimeForResponse) > 1000){
-      /*int res = GetData();
-      digitalWrite(pinLed,(res == 1)? HIGH : LOW);*/
-     TimeForResponse = millis();
+   if(TimeForResponse.IsItTime()){
+      int res = GetData();
+      digitalWrite(pinLed,(res == 1)? HIGH : LOW);
+     TimeForTesr.TimeReset();
     }
 }
