@@ -31,6 +31,9 @@ database.once('connected', () => {
 const q_router = require('./routes/rooms_R');
 app.use('/R', q_router);
 
+const calls_rtr = require('./routes/readability_R');
+app.use('/C', calls_rtr);
+
 app.get('/', (req, res) => {
     res.render('index');
 });

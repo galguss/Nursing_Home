@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/styles/style.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+</head>
+<body>
+    <%- include('header') %>
+    <main class="container">
+        <form action="" method="post" class="setup_from" type="submit">
+            <h3 class="title"><%= pageTitle %></h3>
+            <label for="room_number" class="label_from">מספר חדר</label>
+            <input value="<%= item.room_number %>" class="input_form" name="room_number" type="number" required />
+            <label for="bed_number" class="label_from">מספר מיטה</label>
+            <input value="<%= item.bed_number %>" class="input_form" name="bed_number" type="number" required />
+            <label for="Opening_call_hour" class="label_from">מועד פתיחה:</label>
+            <input value="<%= item.Opening_call_hour %>" class="input_form" name="Opening_call_hour" type="datetime-local" />
+            <label for="closs_call_hour" class="label_from">מועד סגירה:</label>
+            <input value="<%= item.closs_call_hour %>" class="input_form" name="closs_call_hour" type="datetime-local" />
+    
+            <button class="btn_from">הוסף</button>
+        </form>
+    </main>
+</body>
+</html>
